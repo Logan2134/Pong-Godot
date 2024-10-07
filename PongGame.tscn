@@ -1,19 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://ly1khloulgex"]
+[gd_scene load_steps=7 format=3 uid="uid://ly1khloulgex"]
 
 [ext_resource type="Script" path="res://Node2D.gd" id="1_vhpmr"]
 [ext_resource type="Texture2D" uid="uid://bw0t4klm0ej1j" path="res://icon.svg" id="2_hua4a"]
 [ext_resource type="Script" path="res://RigidBody2D.gd" id="3_ex6te"]
+[ext_resource type="Script" path="res://StaticBody2D.gd" id="4_tpoei"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ds2p1"]
+radius = 90.0222
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4frok"]
+size = Vector2(119.607, 126.631)
 
 [node name="PongGame" type="Node2D"]
 script = ExtResource("1_vhpmr")
 
 [node name="Circle" type="Sprite2D" parent="."]
+position = Vector2(477, 215)
 texture = ExtResource("2_hua4a")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Circle"]
 script = ExtResource("3_ex6te")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Circle/RigidBody2D"]
+position = Vector2(-2, 2)
 shape = SubResource("CircleShape2D_ds2p1")
+
+[node name="PlayerPaddle" type="Sprite2D" parent="."]
+position = Vector2(38, 310)
+scale = Vector2(0.476563, 5.84375)
+texture = ExtResource("2_hua4a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PlayerPaddle"]
+script = ExtResource("4_tpoei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle/StaticBody2D"]
+position = Vector2(0, -0.171124)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4frok")
+
+[node name="AIPaddle" type="Sprite2D" parent="."]
+position = Vector2(924, 310)
+scale = Vector2(0.476563, 5.84375)
+texture = ExtResource("2_hua4a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="AIPaddle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AIPaddle/StaticBody2D"]
+position = Vector2(0, -0.171124)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4frok")
