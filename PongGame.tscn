@@ -5,48 +5,50 @@
 [ext_resource type="Script" path="res://Player.gd" id="3_ex6te"]
 [ext_resource type="Script" path="res://AI.gd" id="5_onali"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ds2p1"]
-radius = 90.0222
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lf2n"]
+size = Vector2(67, 470)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4frok"]
-size = Vector2(119.607, 126.631)
+[sub_resource type="CircleShape2D" id="CircleShape2D_7lnt8"]
 
 [node name="PongGame" type="Node2D"]
 
-[node name="Circle" type="Sprite2D" parent="."]
-position = Vector2(477, 215)
-texture = ExtResource("2_hua4a")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="Circle"]
-script = ExtResource("3_8ruje")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Circle/RigidBody2D"]
-position = Vector2(-2, 2)
-shape = SubResource("CircleShape2D_ds2p1")
-
-[node name="PlayerPaddle" type="Sprite2D" parent="."]
-position = Vector2(38, 310)
-scale = Vector2(0.476563, 3.88375)
-texture = ExtResource("2_hua4a")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="PlayerPaddle"]
-constant_linear_velocity = Vector2(5, 5)
+[node name="PlayerPaddle" type="CharacterBody2D" parent="."]
 script = ExtResource("3_ex6te")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle/StaticBody2D"]
-position = Vector2(0, -0.171124)
-shape = SubResource("RectangleShape2D_4frok")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle"]
+position = Vector2(89, 302)
+shape = SubResource("RectangleShape2D_1lf2n")
 
-[node name="AIPaddle" type="Sprite2D" parent="."]
-position = Vector2(924, 310)
-scale = Vector2(0.476563, 3.80375)
+[node name="Sprite2D" type="Sprite2D" parent="PlayerPaddle/CollisionShape2D"]
+position = Vector2(1.99999, 5)
+scale = Vector2(0.516372, 3.70182)
 texture = ExtResource("2_hua4a")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="AIPaddle"]
+[node name="AIPaddle" type="CharacterBody2D" parent="."]
+position = Vector2(850, -1)
 script = ExtResource("5_onali")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AIPaddle/StaticBody2D"]
-position = Vector2(0, -0.171124)
-shape = SubResource("RectangleShape2D_4frok")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AIPaddle"]
+position = Vector2(91, 303)
+shape = SubResource("RectangleShape2D_1lf2n")
 
-[connection signal="input_event" from="PlayerPaddle/StaticBody2D" to="Circle/RigidBody2D" method="_on_static_body_2d_input_event"]
+[node name="Sprite2D" type="Sprite2D" parent="AIPaddle/CollisionShape2D"]
+position = Vector2(0, 4)
+scale = Vector2(0.516372, 3.70182)
+texture = ExtResource("2_hua4a")
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(543, 253)
+scale = Vector2(1, 0.8)
+script = ExtResource("3_8ruje")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2(3, -3.75)
+rotation = -3.14159
+scale = Vector2(6.12713, 8.75871)
+shape = SubResource("CircleShape2D_7lnt8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball/CollisionShape2D"]
+position = Vector2(0.163208, 0)
+scale = Vector2(0.144787, -0.141721)
+texture = ExtResource("2_hua4a")

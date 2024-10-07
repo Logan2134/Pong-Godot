@@ -1,13 +1,16 @@
-extends StaticBody2D
+extends CharacterBody2D
 
 var speed = 400  # Paddle movement speed
+var input_direction = Vector2.ZERO  # Holds the direction
 
 func _process(delta):
-	var input_direction = 0
-	
-	if Input.is_action_pressed("ui_up"):
-		input_direction -= 1
-	if Input.is_action_pressed("ui_down"):
-		input_direction += 1
+	input_direction = Vector2.ZERO  # Reset direction each frame
 
-	position.y += input_direction * speed * delta
+	# Check for input and set direction
+	if Input.is_action_pressed("ui_up"):
+		input_direction.y -= 1
+	if Input.is_action_pressed("ui_down"):
+		input_direction.y += 1
+
+	# Move the paddle using move_and_collide
+	move_and_collide(input_direction * speed * delta)
