@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ly1khloulgex"]
+[gd_scene load_steps=8 format=3 uid="uid://ly1khloulgex"]
 
 [ext_resource type="Texture2D" uid="uid://bw0t4klm0ej1j" path="res://icon.svg" id="2_hua4a"]
 [ext_resource type="Script" path="res://Ball.gd" id="3_8ruje"]
@@ -10,13 +10,18 @@ size = Vector2(67, 470)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7lnt8"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtuv"]
+
 [node name="PongGame" type="Node2D"]
+position = Vector2(31, 13)
 
 [node name="PlayerPaddle" type="CharacterBody2D" parent="."]
+position = Vector2(52, 271)
+scale = Vector2(1, 0.4)
 script = ExtResource("3_ex6te")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle"]
-position = Vector2(89, 302)
+position = Vector2(-1, 4)
 shape = SubResource("RectangleShape2D_1lf2n")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerPaddle/CollisionShape2D"]
@@ -25,11 +30,12 @@ scale = Vector2(0.516372, 3.70182)
 texture = ExtResource("2_hua4a")
 
 [node name="AIPaddle" type="CharacterBody2D" parent="."]
-position = Vector2(850, -1)
+position = Vector2(1038, 271)
+scale = Vector2(1, 0.4)
 script = ExtResource("5_onali")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AIPaddle"]
-position = Vector2(91, 303)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_1lf2n")
 
 [node name="Sprite2D" type="Sprite2D" parent="AIPaddle/CollisionShape2D"]
@@ -39,7 +45,8 @@ texture = ExtResource("2_hua4a")
 
 [node name="Ball" type="RigidBody2D" parent="."]
 position = Vector2(543, 253)
-scale = Vector2(1, 0.8)
+scale = Vector2(0.2, 0.16)
+gravity_scale = 0.0
 script = ExtResource("3_8ruje")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
@@ -51,4 +58,26 @@ shape = SubResource("CircleShape2D_7lnt8")
 [node name="Sprite2D" type="Sprite2D" parent="Ball/CollisionShape2D"]
 position = Vector2(0.163208, 0)
 scale = Vector2(0.144787, -0.141721)
+texture = ExtResource("2_hua4a")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(585, -48)
+scale = Vector2(12, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+scale = Vector2(6.12, 5.22514)
+shape = SubResource("RectangleShape2D_dvtuv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+texture = ExtResource("2_hua4a")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(585, 665)
+scale = Vector2(12, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+scale = Vector2(6.12, 5.22514)
+shape = SubResource("RectangleShape2D_dvtuv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall2"]
 texture = ExtResource("2_hua4a")
