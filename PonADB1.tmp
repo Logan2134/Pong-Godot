@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lf2n"]
 size = Vector2(67, 470)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gp28b"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7lnt8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtuv"]
 
@@ -18,7 +18,7 @@ scale = Vector2(2, 2)
 
 [node name="PlayerPaddle" type="CharacterBody2D" parent="."]
 position = Vector2(52, 271)
-scale = Vector2(1, 0.4)
+scale = Vector2(1, 0.6)
 script = ExtResource("3_ex6te")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle"]
@@ -32,7 +32,7 @@ texture = ExtResource("2_hua4a")
 
 [node name="AIPaddle" type="CharacterBody2D" parent="."]
 position = Vector2(1038, 271)
-scale = Vector2(1, 0.4)
+scale = Vector2(1, 0.6)
 script = ExtResource("5_onali")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AIPaddle"]
@@ -48,14 +48,13 @@ texture = ExtResource("2_hua4a")
 position = Vector2(544, 253)
 scale = Vector2(0.2, 0.16)
 gravity_scale = 0.0
-lock_rotation = true
 script = ExtResource("3_8ruje")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 position = Vector2(3, -3.75)
 rotation = -3.14159
 scale = Vector2(6.12713, 8.75871)
-shape = SubResource("CircleShape2D_gp28b")
+shape = SubResource("CircleShape2D_7lnt8")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball/CollisionShape2D"]
 position = Vector2(0.163208, 0)

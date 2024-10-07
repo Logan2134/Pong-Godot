@@ -18,7 +18,7 @@ scale = Vector2(2, 2)
 
 [node name="PlayerPaddle" type="CharacterBody2D" parent="."]
 position = Vector2(52, 271)
-scale = Vector2(1, 0.4)
+scale = Vector2(1, 0.6)
 script = ExtResource("3_ex6te")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle"]
@@ -32,7 +32,7 @@ texture = ExtResource("2_hua4a")
 
 [node name="AIPaddle" type="CharacterBody2D" parent="."]
 position = Vector2(1038, 271)
-scale = Vector2(1, 0.4)
+scale = Vector2(1, 0.6)
 script = ExtResource("5_onali")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AIPaddle"]
