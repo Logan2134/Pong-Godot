@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ly1khloulgex"]
+
+[ext_resource type="Script" path="res://Node2D.gd" id="1_vhpmr"]
+[ext_resource type="Texture2D" uid="uid://bw0t4klm0ej1j" path="res://icon.svg" id="2_hua4a"]
+[ext_resource type="Script" path="res://RigidBody2D.gd" id="3_ex6te"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ds2p1"]
+
+[node name="PongGame" type="Node2D"]
+script = ExtResource("1_vhpmr")
+
+[node name="Circle" type="Sprite2D" parent="."]
+texture = ExtResource("2_hua4a")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Circle"]
+script = ExtResource("3_ex6te")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Circle/RigidBody2D"]
+shape = SubResource("CircleShape2D_ds2p1")
