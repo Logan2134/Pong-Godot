@@ -10,6 +10,7 @@ No reset mechanics: The game plays continuously without forced resets after scor
 # Installation and Setup
 Prerequisites
 Download and install Godot 4 from Godot Engine website.
+https://godotengine.org/download/windows/
 
 # How to Run the Game
 Clone the repository to your local machine:
