@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var speed = 400  # Paddle speed
-var is_ai = false  # Change this to false for player control
+var speed = 200  # Paddle speed
+var is_ai = true  # Change this to false for player control
 
 func _process(delta):
 	if is_ai:
@@ -15,7 +15,7 @@ func _process(delta):
 			move_and_collide(Vector2(0, -1) * speed * delta)
 	else:
 		# Player-controlled movement
-		if Input.is_action_pressed("ui_accept"):
+		if Input.is_action_pressed("ui_up"):
 			move_and_collide(Vector2(0, -1) * speed * delta)  # Move up
-		elif Input.is_action_pressed("ui_cancel"):
+		elif Input.is_action_pressed("ui_down"):
 			move_and_collide(Vector2(0, 1) * speed * delta)  # Move down
